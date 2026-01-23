@@ -2,10 +2,10 @@ import { Award, BookOpen, Heart, Target } from 'lucide-react';
 
 export default function About() {
   const stats = [
-    { label: 'Years Experience', value: '5+' },
-    { label: 'Projects Completed', value: '50+' },
-    { label: 'Happy Clients', value: '30+' },
-    { label: 'Code Commits', value: '10k+' },
+    { label: 'Years Experience', value: '2+' },
+    { label: 'Projects Completed', value: '10+' },
+    { label: 'Academic Year', value: '3rd' },
+    //{ label: 'Code Commits', value: '3k+' },
   ];
 
   const values = [
@@ -39,8 +39,8 @@ export default function About() {
             About Me
           </h1>
           <p className="text-xl max-w-3xl mx-auto transition-colors duration-300 text-gray-600 dark:text-gray-400">
-            Passionate developer with a love for creating elegant solutions to
-            complex problems
+            Software Engineering undergraduate at SLIIT, passionate full-stack developer with 2 years of experience
+            building innovative solutions
           </p>
         </div>
 
@@ -48,22 +48,20 @@ export default function About() {
           <div className="space-y-6">
             <h2 className="text-3xl font-bold transition-colors duration-300 text-gray-900 dark:text-white">My Story</h2>
             <p className="leading-relaxed transition-colors duration-300 text-gray-600 dark:text-gray-400">
-              I'm a full-stack developer with a passion for building beautiful,
-              functional web applications. With over 5 years of experience in
-              the industry, I've had the privilege of working on diverse
-              projects ranging from startups to enterprise applications.
+              I'm currently a 3rd year Software Engineering undergraduate at SLIIT (Sri Lanka Institute of Information Technology),
+              with a strong passion for full stack development. With 2 years of hands on experience, I've developed a solid
+              foundation in building scalable and efficient web applications that solve real world problems.
             </p>
             <p className="leading-relaxed transition-colors duration-300 text-gray-600 dark:text-gray-400">
-              My journey in tech started with a curiosity about how things work
-              behind the scenes. Today, I specialize in modern web technologies
-              and love bringing ideas to life through code. I believe in
-              writing clean, maintainable code and creating user experiences
-              that truly matter.
+              My technical expertise spans across core computer science fundamentals including Object-Oriented Programming (OOP),
+              Data Structures & Algorithms, and Data Handling & Analysis. I excel at writing clean, efficient code and
+              transforming complex requirements into elegant solutions. My journey in software development has equipped me
+              with both frontend and backend technologies, allowing me to build complete end to end applications.
             </p>
             <p className="leading-relaxed transition-colors duration-300 text-gray-600 dark:text-gray-400">
-              When I'm not coding, you'll find me exploring new technologies,
-              contributing to open-source projects, or sharing knowledge with
-              the developer community.
+              Beyond coding, I'm constantly exploring new technologies, optimizing algorithms, and enhancing my problem solving
+              skills. I believe in continuous learning and staying updated with industry best practices to deliver high quality
+              software solutions that make a difference.
             </p>
           </div>
 

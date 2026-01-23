@@ -8,10 +8,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/GaminduKalmadu', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/gamindu-kalmadu-7a09b8352/', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:gamindukalmadu8@gmail.com', label: 'Email' },
   ];
 
   return (
