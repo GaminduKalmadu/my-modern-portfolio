@@ -3,13 +3,13 @@ import { ExternalLink, Github } from 'lucide-react';
 export default function Projects() {
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Care Pro Healthcare System',
       description:
         'A full-featured online shopping platform with payment integration, inventory management, and real-time analytics.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      github: '#',
-      demo: '#',
+      image: '/home.jpeg',
+      tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+      github: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
+      demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
     },
     {
       title: 'Task Management App',
