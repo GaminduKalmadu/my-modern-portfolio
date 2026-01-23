@@ -142,7 +142,7 @@ export default function Home() {
                 {/* Profile Image Container - Square with rounded corners */}
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-2">
                   <img
-                    src="/profile.jpg"
+                    src="/profile1.jpeg"
                     alt="Gamindu Kalmadu"
                     className="w-full h-full object-cover"
                   />

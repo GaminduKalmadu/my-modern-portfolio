@@ -15,19 +15,19 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'hello@example.com',
-      link: 'mailto:hello@example.com',
+      value: 'gamindukalmadu8@gmail.com',
+      link: 'mailto:gamindukalmadu8@gmail.com',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      value: '0767955166',
+      link: 'tel:0767955166',
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Malabe, Sri Lanka',
       link: '#',
     },
   ];

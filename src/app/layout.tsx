@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import CustomCursor from '@/components/CustomCursor';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider>
+          <CustomCursor />
           <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 transition-colors duration-300">
             <Navigation />
             <main className="flex-grow">
