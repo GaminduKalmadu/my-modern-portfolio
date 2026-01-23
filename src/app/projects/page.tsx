@@ -12,47 +12,20 @@ export default function Projects() {
       demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
     },
     {
-      title: 'Task Management App',
+      title: 'Flexiride vehicle rental system',
       description:
         'Collaborative task management tool with real-time updates, team chat, and productivity analytics.',
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['React', 'Firebase', 'Tailwind CSS'],
-      github: '#',
-      demo: '#',
+      image: '/car-rental-BL1p-RFW.webp',
+      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'java', 'MySQL'],
+      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
+      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
     },
     {
-      title: 'Weather Dashboard',
+      title: 'Ceylon Brew -Tea Plantation Management System',
       description:
         'Beautiful weather application with detailed forecasts, interactive maps, and personalized alerts.',
       image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['React', 'OpenWeather API', 'Chart.js'],
-      github: '#',
-      demo: '#',
-    },
-    {
-      title: 'Portfolio CMS',
-      description:
-        'Content management system specifically designed for creative professionals to showcase their work.',
-      image: 'https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Next.js', 'PostgreSQL', 'TypeScript'],
-      github: '#',
-      demo: '#',
-    },
-    {
-      title: 'Fitness Tracker',
-      description:
-        'Comprehensive fitness tracking app with workout plans, progress tracking, and nutrition monitoring.',
-      image: 'https://images.pexels.com/photos/4162449/pexels-photo-4162449.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['React Native', 'Redux', 'Node.js'],
-      github: '#',
-      demo: '#',
-    },
-    {
-      title: 'AI Chat Assistant',
-      description:
-        'Intelligent chatbot powered by AI with natural language processing and context awareness.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Python', 'React', 'OpenAI', 'FastAPI'],
+      tags: ['Next.js', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'TypeScript', 'Postman'],
       github: '#',
       demo: '#',
     },
