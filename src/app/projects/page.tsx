@@ -29,6 +29,15 @@ export default function Projects() {
       github: '#',
       demo: '#',
     },
+    {
+      title: 'My Portfolio Website',
+      description:
+        'A personal portfolio website to showcase my projects, skills, and experience.',
+      image: '/portfolio1.png',
+      tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      github: 'https://github.com/GaminduKalmadu/my-modern-portfolio',
+      demo: 'https://github.com/GaminduKalmadu/my-modern-portfolio',
+    },
   ];
 
   return (
