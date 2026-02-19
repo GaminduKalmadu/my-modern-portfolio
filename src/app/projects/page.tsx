@@ -24,7 +24,7 @@ export default function Projects() {
       title: 'Ceylon Brew -Tea Plantation Management System',
       description:
         'Beautiful weather application with detailed forecasts, interactive maps, and personalized alerts.',
-      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/ceylonbrew.png',
       tags: ['Next.js', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'TypeScript', 'Postman'],
       github: '#',
       demo: '#',
