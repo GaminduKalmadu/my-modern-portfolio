@@ -84,7 +84,7 @@ html {
   width: 40px;
   height: 40px;
   border: 2px solid;
-  border-color: rgba(99, 102, 241, 0.5);
+  border-color: rgba(249, 91, 246, 0.5); /* Primary Neon Pink */
   border-radius: 50%;
   transform: translate(-50%, -50%) translateZ(0);
   transition: width 0.25s cubic-bezier(0.23, 1, 0.32, 1),
@@ -97,8 +97,8 @@ html {
 .custom-cursor-outer.active {
   width: 60px;
   height: 60px;
-  border-color: rgba(168, 85, 247, 0.8);
-  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(83, 207, 153, 0.8); /* Secondary Neon Green */
+  background: rgba(83, 207, 153, 0.1);
   transition: width 0.2s cubic-bezier(0.23, 1, 0.32, 1),
               height 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -113,10 +113,10 @@ html {
 .custom-cursor-inner {
   width: 8px;
   height: 8px;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  background: linear-gradient(135deg, #f95bf6 0%, #53cf99 100%);
   border-radius: 50%;
   transform: translate(-50%, -50%) translateZ(0);
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 10px rgba(249, 91, 246, 0.5);
   transition: width 0.2s cubic-bezier(0.23, 1, 0.32, 1),
               height 0.2s cubic-bezier(0.23, 1, 0.32, 1),
               background 0.2s ease,
@@ -126,8 +126,8 @@ html {
 .custom-cursor-inner.active {
   width: 4px;
   height: 4px;
-  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.8);
+  background: linear-gradient(135deg, #53cf99 0%, #f95bf6 100%);
+  box-shadow: 0 0 15px rgba(83, 207, 153, 0.8);
   transition: width 0.15s cubic-bezier(0.23, 1, 0.32, 1),
               height 0.15s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -142,7 +142,7 @@ html {
 .custom-cursor-trail {
   width: 6px;
   height: 6px;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  background: linear-gradient(135deg, #f95bf6 0%, #53cf99 100%);
   border-radius: 50%;
   transform: translateZ(0);
   animation: trailFade 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
@@ -163,7 +163,7 @@ html {
 .custom-cursor-glow {
   width: 80px;
   height: 80px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249, 91, 246, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   transform: translate(-50%, -50%) translateZ(0);
   opacity: 0;
@@ -192,25 +192,25 @@ html {
 /* Dark mode cursor adjustments */
 @media (prefers-color-scheme: dark) {
   .custom-cursor-outer {
-    border-color: rgba(168, 85, 247, 0.6);
+    border-color: rgba(83, 207, 153, 0.6);
   }
   
   .custom-cursor-outer.active {
-    border-color: rgba(236, 72, 153, 0.8);
-    background: rgba(236, 72, 153, 0.1);
+    border-color: rgba(249, 91, 246, 0.8);
+    background: rgba(249, 91, 246, 0.1);
   }
   
   .custom-cursor-inner {
-    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+    background: linear-gradient(135deg, #53cf99 0%, #f95bf6 100%);
+    box-shadow: 0 0 15px rgba(83, 207, 153, 0.7);
   }
   
   .custom-cursor-trail {
-    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #53cf99 0%, #f95bf6 100%);
   }
   
   .custom-cursor-glow {
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(83, 207, 153, 0.2) 0%, transparent 70%);
   }
 }
 
@@ -245,10 +245,44 @@ button.btn-magnetic, .btn-magnetic {
 
 /* Add subtle glow on hover for cards and interactive elements */
 .card-hover, [class*="card"], [class*="feature"] {
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card-hover:hover {
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 40px rgba(249, 91, 246, 0.25);
   transform: translateY(-5px);
+}
+
+/* Glassmorphism Card Utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-card {
+  background: rgba(17, 24, 39, 0.55);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Neon Styling Utilities */
+.neon-border-primary {
+  box-shadow: 0 0 15px rgba(249, 91, 246, 0.2), inset 0 0 15px rgba(249, 91, 246, 0.05);
+  border: 1px solid rgba(249, 91, 246, 0.4);
+}
+
+.neon-border-secondary {
+  box-shadow: 0 0 15px rgba(83, 207, 153, 0.2), inset 0 0 15px rgba(83, 207, 153, 0.05);
+  border: 1px solid rgba(83, 207, 153, 0.4);
+}
+
+.neon-text-primary {
+  text-shadow: 0 0 8px rgba(249, 91, 246, 0.7);
+}
+
+.neon-text-secondary {
+  text-shadow: 0 0 8px rgba(83, 207, 153, 0.7);
 }
