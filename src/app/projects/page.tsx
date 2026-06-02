@@ -106,8 +106,8 @@ export default function Projects() {
               variants={itemVariants}
               className={`rounded-2xl overflow-hidden border bg-gray-50/60 dark:bg-slate-900/60 border-gray-200/85 dark:border-slate-800/80 backdrop-blur-md transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-2 group ${
                 project.isPrimary
-                  ? 'hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-[0_0_30px_rgba(249,91,246,0.15)]'
-                  : 'hover:border-secondary/50 dark:hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(83,207,153,0.15)]'
+                  ? 'hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-[0_0_30px_rgba(29,78,216,0.15)]'
+                  : 'hover:border-secondary/50 dark:hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]'
               }`}
             >
               {/* Image box */}
