@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Layers, Cpu, Palette, Github, ExternalLink, Star, Terminal } from 'lucide-react';
+import { ArrowRight, Layers, Cpu, Palette, Github, ExternalLink, Star, Terminal, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const skillsList = [
@@ -176,12 +176,14 @@ export default function Home() {
                   Explore Projects
                   <ArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" size={20} />
                 </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 dark:text-white rounded-xl transition-all duration-300 hover:scale-[1.03] bg-white border border-gray-200 hover:border-primary/50 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-800 dark:hover:border-secondary/50 dark:hover:bg-gray-800/80 shadow-sm"
+                <a
+                  href="/gamindu_updated26.pdf"
+                  download="Gamindu_Kalmadu_CV.pdf"
+                  className="inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 dark:text-white rounded-xl transition-all duration-300 hover:scale-[1.03] bg-white border border-gray-200 hover:border-primary/50 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-800 dark:hover:border-secondary/50 dark:hover:bg-gray-800/80 shadow-sm gap-2"
                 >
-                  Get In Touch
-                </Link>
+                  <Download size={20} className="text-primary dark:text-secondary" />
+                  Download CV
+                </a>
               </motion.div>
 
               {/* Stats Section */}
@@ -225,7 +227,7 @@ export default function Home() {
                 <div className="absolute -inset-3 bg-gradient-to-tr from-primary via-secondary to-primary rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"></div>
 
                 {/* Main profile picture container (Perfect circle sci-fi scan) */}
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-900 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(249,91,246,0.3)]">
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-900 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(29,78,216,0.3)]">
                   {/* Dynamic 3D mouse parallax hover on photo */}
                   <motion.img
                     src="/profile1.jpeg"
@@ -236,7 +238,7 @@ export default function Home() {
                   />
                   
                   {/* Holographic grid scanner overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(249,91,246,0.05)_1px,transparent_1px)] bg-[size:100%_6px] pointer-events-none mix-blend-overlay"></div>
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(29,78,216,0.05)_1px,transparent_1px)] bg-[size:100%_6px] pointer-events-none mix-blend-overlay"></div>
                 </div>
 
                 {/* Available for work badge */}
@@ -342,8 +344,8 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className={`flex flex-col rounded-2xl overflow-hidden bg-gray-50/60 dark:bg-slate-900/60 border border-gray-200/85 dark:border-slate-800/80 backdrop-blur-md transition-all duration-300 group hover:-translate-y-2.5 ${
                   project.isPrimary
-                    ? 'hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-[0_0_30px_rgba(249,91,246,0.15)]'
-                    : 'hover:border-secondary/50 dark:hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(83,207,153,0.15)]'
+                    ? 'hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-[0_0_30px_rgba(29,78,216,0.15)]'
+                    : 'hover:border-secondary/50 dark:hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]'
                 }`}
               >
                 {/* Project Image Container */}
