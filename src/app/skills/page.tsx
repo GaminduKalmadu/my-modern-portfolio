@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { 
@@ -43,6 +43,7 @@ import {
 
 export default function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [selectedSkills, setSelectedSkills] = useState<Record<string, string>>({});
   const { isDark } = useTheme();
 
   const skillCategories = [
@@ -132,17 +133,7 @@ export default function Skills() {
     },
   };
 
-  const iconVariants = {
-    hover: {
-      scale: 1.05,
-      y: -2,
-      transition: {
-        duration: 0.2,
-        type: 'spring' as const,
-        stiffness: 300
-      },
-    },
-  };
+
 
   return (
     <div className="min-h-screen pt-24 pb-16 mt-10 transition-colors duration-500 bg-white dark:bg-gray-950 relative">
@@ -174,10 +165,15 @@ export default function Skills() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 gap-8 mb-16"
+          className="grid md:grid-cols-2 gap-12 mb-16"
         >
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
+            const activeSkillName = (hoveredSkill && category.skills.some(s => s.name === hoveredSkill))
+              ? hoveredSkill
+              : selectedSkills[category.title] || category.skills[0].name;
+            const activeSkill = category.skills.find(s => s.name === activeSkillName) || category.skills[0];
+
             return (
               <motion.div
                 key={index}
@@ -194,64 +190,97 @@ export default function Skills() {
                   </h2>
                 </div>
 
-                {/* Skills Badges Grid with Authentic Colors by Default */}
-                <div className="grid grid-cols-2 gap-3 mb-10">
-                  {category.skills.map((skill, skillIndex) => {
-                    const SkillIcon = skill.icon;
-                    const isHovered = hoveredSkill === skill.name;
-                    return (
-                      <motion.div
-                        key={skillIndex}
-                        variants={iconVariants}
-                        whileHover="hover"
-                        onHoverStart={() => setHoveredSkill(skill.name)}
-                        onHoverEnd={() => setHoveredSkill(null)}
-                        className="relative cursor-pointer"
-                      >
-                        <div
-                          className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50/70 border border-gray-200/80 dark:bg-slate-900/40 dark:border-slate-800/80 transition-all duration-300"
+                {/* Skills Icons Row */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-6 items-center justify-center">
+                  <div className="flex flex-wrap gap-3.5 justify-center">
+                    {category.skills.map((skill, skillIndex) => {
+                      const SkillIcon = skill.icon;
+                      const isActive = skill.name === activeSkillName;
+                      return (
+                        <motion.button
+                          key={skillIndex}
+                          onClick={() => setSelectedSkills(prev => ({ ...prev, [category.title]: skill.name }))}
+                          onMouseEnter={() => setHoveredSkill(skill.name)}
+                          onMouseLeave={() => setHoveredSkill(null)}
+                          whileHover={{ scale: 1.15, y: -4 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 border focus:outline-none"
                           style={{
-                            borderColor: isHovered ? skill.brandColor : undefined,
-                            boxShadow: isHovered ? `0 0 20px ${skill.brandColor}33` : undefined,
-                            backgroundColor: isHovered ? `${skill.brandColor}0f` : undefined
+                            borderColor: isActive ? skill.brandColor : 'rgba(156, 163, 175, 0.15)',
+                            backgroundColor: isActive ? `${skill.brandColor}15` : 'transparent',
+                            boxShadow: isActive ? `0 0 25px ${skill.brandColor}44` : 'none',
                           }}
                         >
-                          <div className="flex-shrink-0">
-                            <SkillIcon 
-                              style={{ color: skill.brandColor }} 
-                              size={22} 
+                          <SkillIcon 
+                            style={{ color: isActive ? skill.brandColor : '#9CA3AF' }} 
+                            size={32} 
+                          />
+                          {/* Active layout dot */}
+                          {isActive && (
+                            <motion.span 
+                              layoutId={`active-dot-${category.title}`}
+                              className="absolute -bottom-1 w-2 h-2 rounded-full"
+                              style={{ backgroundColor: skill.brandColor }}
                             />
-                          </div>
-                          <span className="text-xs sm:text-sm font-bold text-gray-805 dark:text-gray-200 tracking-wide transition-colors duration-300">
-                            {skill.name}
-                          </span>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
+                          )}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Centered Dynamic Active Skill Info Card (Visual Pop-up) */}
+                <div className="h-16 flex items-center justify-center mb-8">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeSkillName}
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="inline-flex items-center gap-3.5 px-5 py-2.5 rounded-2xl border bg-gray-50/40 dark:bg-slate-900/30 backdrop-blur-md shadow-sm"
+                      style={{
+                        borderColor: `${activeSkill.brandColor}33`,
+                        boxShadow: `0 8px 30px -10px ${activeSkill.brandColor}22`
+                      }}
+                    >
+                      <activeSkill.icon style={{ color: activeSkill.brandColor }} size={24} className="animate-pulse" />
+                      <span className="text-sm font-black text-gray-900 dark:text-white tracking-wide">
+                        {activeSkill.name}
+                      </span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+                      <span className="text-xs font-mono font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Proficiency: {activeSkill.level}%
+                      </span>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
 
                 {/* Skill Progress Bars with Brand Colors */}
-                <div className="space-y-5">
+                <div className="space-y-4">
                   <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3 font-mono">
                     Proficiency Metrics
                   </h3>
                   {category.skills.map((skill, skillIndex) => {
-                    const isHovered = hoveredSkill === skill.name;
+                    const isActive = skill.name === activeSkillName;
                     return (
                       <div
                         key={skillIndex}
-                        className="p-2.5 rounded-xl transition-all duration-300 border border-transparent"
+                        onClick={() => setSelectedSkills(prev => ({ ...prev, [category.title]: skill.name }))}
+                        className="p-3 py-2.5 rounded-2xl cursor-pointer transition-all duration-500 border"
                         style={{
-                          backgroundColor: isHovered ? `${skill.brandColor}0d` : 'transparent',
-                          borderColor: isHovered ? `${skill.brandColor}22` : 'transparent'
+                          backgroundColor: isActive ? `${skill.brandColor}0d` : 'transparent',
+                          borderColor: isActive ? `${skill.brandColor}22` : 'transparent',
+                          opacity: isActive ? 1 : 0.45,
+                          transform: isActive ? 'scale(1.02)' : 'scale(1)',
+                          boxShadow: isActive ? `0 4px 20px -5px ${skill.brandColor}22` : 'none',
                         }}
                         onMouseEnter={() => setHoveredSkill(skill.name)}
                         onMouseLeave={() => setHoveredSkill(null)}
                       >
                         <div className="flex justify-between items-center mb-1.5">
-                          <span className="text-sm font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: skill.brandColor }}></span>
+                          <span className="text-sm font-extrabold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: skill.brandColor }}></span>
                             {skill.name}
                           </span>
                           <span className="text-xs font-mono font-bold text-gray-500 dark:text-gray-400">
@@ -262,11 +291,8 @@ export default function Skills() {
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1.2, delay: 0.1 + skillIndex * 0.05, ease: 'easeOut' }}
+                            transition={{ duration: 1.2, ease: 'easeOut' }}
                             className={`bg-gradient-to-r ${skill.color} h-2.5 rounded-full shadow-sm relative`}
-                            style={{
-                              boxShadow: isHovered ? `0 0 10px ${skill.brandColor}` : undefined
-                            }}
                           >
                             <div className="absolute inset-0 bg-white/10 opacity-30 animate-pulse"></div>
                           </motion.div>
