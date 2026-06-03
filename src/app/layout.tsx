@@ -8,6 +8,9 @@ import CustomCursor from '@/components/CustomCursor';
 export const metadata: Metadata = {
   title: 'Portfolio',
   description: 'My personal portfolio website',
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

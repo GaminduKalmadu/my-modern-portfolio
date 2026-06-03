@@ -42,7 +42,7 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className={`text-2xl font-bold transition-colors duration-200 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          <Link href="/" className="text-2xl font-extrabold tracking-wider transition-all duration-300 hover:scale-105 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-sm">
             Gamindu
           </Link>
 
@@ -51,12 +51,12 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 href={link.path}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 ${
                   pathname === link.path
-                    ? 'text-blue-600'
+                    ? 'text-primary'
                     : isDark
-                      ? 'text-gray-300 hover:text-blue-400'
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-gray-300 hover:text-secondary'
+                      : 'text-gray-700 hover:text-primary'
                 }`}
               >
                 {link.label}
@@ -67,10 +67,10 @@ const Navigation = () => {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors duration-200 ${
+              className={`p-2 rounded-lg transition-colors duration-200 border ${
                 isDark
-                  ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gray-800 text-secondary hover:bg-gray-700 border-gray-700'
+                  : 'bg-gray-100 text-primary hover:bg-gray-200 border-gray-200'
               }`}
               aria-label="Toggle theme"
             >
@@ -93,12 +93,12 @@ const Navigation = () => {
                 key={link.path}
                 href={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 text-sm font-medium ${
+                className={`block py-2 text-sm font-medium transition-colors duration-200 ${
                   pathname === link.path
-                    ? 'text-blue-600'
+                    ? 'text-primary font-bold'
                     : isDark
-                      ? 'text-gray-300'
-                      : 'text-gray-700'
+                      ? 'text-gray-300 hover:text-secondary'
+                      : 'text-gray-700 hover:text-primary'
                 }`}
               >
                 {link.label}
