@@ -6,26 +6,15 @@ import { ExternalLink, Github } from 'lucide-react';
 export default function Projects() {
   const projects = [
     {
-      title: 'Care Pro Healthcare System',
-      category: 'Full-Stack Web Application',
+      title: 'Smart Healthcare Microservices Platform',
+      category: 'Full-Stack Microservices Application',
       description:
-        'A comprehensive digital healthcare management platform facilitating patient-doctor communication, appointment booking, medical records management, and automated pharmacy billing.',
-      image: '/home.jpeg',
-      tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-      github: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
-      demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
+        'A containerized digital healthcare management platform built on a microservices architecture. Features an isolated React frontend integrated with an Nginx reverse proxy, a secure Spring Boot token-based authentication service backed by MySQL, and an AI-powered doctor suggestion service utilizing Ollama embeddings.',
+      image: '/Clinexa.png',
+      tags: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'Docker', 'Nginx', 'Ollama AI', 'REST API'],
+      github: 'https://github.com/kiruluchamika/Smart-Healthcare-Microservices-Y3S1_DS',
+      demo: 'https://github.com/kiruluchamika/Smart-Healthcare-Microservices-Y3S1_DS',
       isPrimary: true
-    },
-    {
-      title: 'Flexiride Vehicle Rental System',
-      category: 'Enterprise Java Application',
-      description:
-        'A modern vehicle rental system enabling customers to search, book, and review vehicle listings, featuring custom billing algorithms and a full-featured admin management dashboard.',
-      image: '/car-rental-BL1p-RFW.webp',
-      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
-      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      isPrimary: false
     },
     {
       title: 'Ceylon Brew - Tea plantation Management System',
@@ -36,7 +25,29 @@ export default function Projects() {
       tags: ['Next.js', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'TypeScript'],
       github: '#',
       demo: '#',
+      isPrimary: false
+    },
+    {
+      title: 'Flexiride Vehicle Rental System',
+      category: 'Enterprise Java Application',
+      description:
+        'A modern vehicle rental system enabling customers to search, book, and review vehicle listings, featuring custom billing algorithms and a full-featured admin management dashboard.',
+      image: '/car-rental-BL1p-RFW.webp',
+      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
+      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
+      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
       isPrimary: true
+    },
+    {
+      title: 'Care Pro Healthcare System',
+      category: 'Full-Stack Web Application',
+      description:
+        'A comprehensive digital healthcare management platform facilitating patient-doctor communication, appointment booking, medical records management, and automated pharmacy billing.',
+      image: '/home.jpeg',
+      tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+      github: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
+      demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
+      isPrimary: false
     },
     {
       title: 'My Portfolio Website',
@@ -47,7 +58,7 @@ export default function Projects() {
       tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       github: 'https://github.com/GaminduKalmadu/my-modern-portfolio',
       demo: 'https://github.com/GaminduKalmadu/my-modern-portfolio',
-      isPrimary: false
+      isPrimary: true
     },
   ];
 
@@ -104,11 +115,10 @@ export default function Projects() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`rounded-2xl overflow-hidden border bg-gray-50/60 dark:bg-slate-900/60 border-gray-200/85 dark:border-slate-800/80 backdrop-blur-md transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-2 group ${
-                project.isPrimary
+              className={`rounded-2xl overflow-hidden border bg-gray-50/60 dark:bg-slate-900/60 border-gray-200/85 dark:border-slate-800/80 backdrop-blur-md transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-2 group ${project.isPrimary
                   ? 'hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-[0_0_30px_rgba(29,78,216,0.15)]'
                   : 'hover:border-secondary/50 dark:hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]'
-              }`}
+                }`}
             >
               {/* Image box */}
               <div className="relative h-48 overflow-hidden bg-gray-150 dark:bg-gray-900">
@@ -118,11 +128,10 @@ export default function Projects() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4 z-20">
-                  <span className={`px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-sm border backdrop-blur-md ${
-                    project.isPrimary
+                  <span className={`px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-sm border backdrop-blur-md ${project.isPrimary
                       ? 'bg-primary/10 text-primary border-primary/20'
                       : 'bg-secondary/10 text-secondary border-secondary/20'
-                  }`}>
+                    }`}>
                     {project.category}
                   </span>
                 </div>
@@ -131,25 +140,23 @@ export default function Projects() {
               {/* Text content */}
               <div className="p-6 flex flex-col justify-between h-[calc(100%-12rem)]">
                 <div className="space-y-4">
-                  <h3 className={`text-xl font-extrabold text-gray-900 dark:text-white transition-colors duration-300 ${
-                    project.isPrimary ? 'group-hover:text-primary' : 'group-hover:text-secondary'
-                  }`}>
+                  <h3 className={`text-xl font-extrabold text-gray-900 dark:text-white transition-colors duration-300 ${project.isPrimary ? 'group-hover:text-primary' : 'group-hover:text-secondary'
+                    }`}>
                     {project.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
                     {project.description}
                   </p>
-                  
+
                   {/* Badges */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className={`px-2.5 py-1 text-xs font-semibold rounded-lg border transition-all duration-300 ${
-                          project.isPrimary
+                        className={`px-2.5 py-1 text-xs font-semibold rounded-lg border transition-all duration-300 ${project.isPrimary
                             ? 'bg-primary/5 text-primary border-primary/10 dark:bg-primary/10 dark:text-primary dark:border-primary/20'
                             : 'bg-secondary/5 text-secondary border-secondary/10 dark:bg-secondary/10 dark:text-secondary dark:border-secondary/20'
-                        }`}
+                          }`}
                       >
                         {tag}
                       </span>
@@ -162,11 +169,10 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center justify-center flex-1 py-2.5 rounded-xl text-xs font-bold uppercase border transition-all duration-300 ${
-                      project.isPrimary
+                    className={`flex items-center justify-center flex-1 py-2.5 rounded-xl text-xs font-bold uppercase border transition-all duration-300 ${project.isPrimary
                         ? 'border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-primary dark:hover:text-white'
                         : 'border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-secondary hover:text-white hover:border-secondary dark:hover:bg-secondary dark:hover:text-white'
-                    }`}
+                      }`}
                   >
                     <Github size={14} className="mr-1.5" />
                     Code
@@ -175,11 +181,10 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center justify-center flex-1 py-2.5 rounded-xl text-xs font-bold uppercase border transition-all duration-300 ${
-                      project.isPrimary
+                    className={`flex items-center justify-center flex-1 py-2.5 rounded-xl text-xs font-bold uppercase border transition-all duration-300 ${project.isPrimary
                         ? 'border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-primary dark:hover:text-white'
                         : 'border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-secondary hover:text-white hover:border-secondary dark:hover:bg-secondary dark:hover:text-white'
-                    }`}
+                      }`}
                   >
                     <ExternalLink size={14} className="mr-1.5" />
                     Live Demo
