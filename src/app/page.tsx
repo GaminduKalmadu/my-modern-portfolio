@@ -67,38 +67,38 @@ export default function Home() {
 
   const featuredProjects = [
     {
-      title: 'Care Pro Healthcare System',
-      category: 'Full-Stack Web Application',
-      description: 'A comprehensive digital healthcare management platform facilitating patient-doctor communication, appointment booking, medical records management, and automated billing.',
-      summary: 'Key Details: Features patient portals, doctor dashboard scheduling, secure medical history logs, and instant invoice generation with MySQL database integration.',
-      image: '/home.jpeg',
-      tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-      github: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
-      demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
+      title: 'Smart Healthcare Microservices Platform',
+      category: 'Full-Stack Microservices Application',
+      description:
+        'A containerized digital healthcare management platform built on a microservices architecture. Features an isolated React frontend integrated with an Nginx reverse proxy, a secure Spring Boot token-based authentication service backed by MySQL, and an AI-powered doctor suggestion service utilizing Ollama embeddings.',
+      image: '/Clinexa.png',
+      tags: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'Docker', 'Nginx', 'Ollama AI', 'REST API'],
+      github: 'https://github.com/kiruluchamika/Smart-Healthcare-Microservices-Y3S1_DS',
+      demo: 'https://github.com/kiruluchamika/Smart-Healthcare-Microservices-Y3S1_DS',
       isPrimary: true
-    },
-    {
-      title: 'Flexiride Vehicle Rental System',
-      category: 'Enterprise Java Application',
-      description: 'A modern vehicle rental system enabling customers to search, book, and review vehicle listings, featuring custom billing algorithms and a full-featured admin management dashboard.',
-      summary: 'Key Details: Developed as a SLIIT academic project implementing OOP principles, secure user authentication, interactive maps, and real-time fleet availability status.',
-      image: '/car-rental-BL1p-RFW.webp',
-      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
-      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      isPrimary: false
     },
     {
       title: 'Ceylon Brew - Tea plantation Management System',
       category: 'Next.js & Spring Boot ERP',
-      description: 'An enterprise resource planning (ERP) platform designed for tea plantation owners to optimize crop harvesting, employee payroll, logistics, and processing workflows.',
-      summary: 'Key Details: Features a Spring Boot microservice backend, robust Next.js frontend, crop-to-shipment tracking log, and interactive plantation maps.',
+      description:
+        'An enterprise resource planning (ERP) platform designed for tea plantation owners to optimize crop harvesting, employee payroll, logistics, and processing workflows.',
       image: '/ceylonbrew.png',
       tags: ['Next.js', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'TypeScript'],
       github: '#',
       demo: '#',
+      isPrimary: false
+    },
+    {
+      title: 'Flexiride Vehicle Rental System',
+      category: 'Enterprise Java Application',
+      description:
+        'A modern vehicle rental system enabling customers to search, book, and review vehicle listings, featuring custom billing algorithms and a full-featured admin management dashboard.',
+      image: '/car-rental-BL1p-RFW.webp',
+      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
+      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
+      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
       isPrimary: true
-    }
+    },
   ];
 
   return (
@@ -378,11 +378,6 @@ export default function Home() {
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-355 leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
-
-                    {/* Developer Generated Summary Block */}
-                    <div className="p-3.5 rounded-lg bg-gray-100/50 dark:bg-gray-950/60 border border-gray-250/50 dark:border-gray-800/80 text-xs font-medium text-gray-700 dark:text-gray-300 leading-relaxed font-mono">
-                      {project.summary}
-                    </div>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 pt-2">
