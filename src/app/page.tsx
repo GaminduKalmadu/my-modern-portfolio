@@ -177,7 +177,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" size={20} />
                 </Link>
                 <a
-                  href="/gamindu_updated26.pdf"
+                  href="/gamindu_version2_26.pdf"
                   download="Gamindu_Kalmadu_CV.pdf"
                   className="inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 dark:text-white rounded-xl transition-all duration-300 hover:scale-[1.03] bg-white border border-gray-200 hover:border-primary/50 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-800 dark:hover:border-secondary/50 dark:hover:bg-gray-800/80 shadow-sm gap-2"
                 >
