@@ -17,6 +17,17 @@ export default function Projects() {
       isPrimary: true
     },
     {
+      title: 'Hyperlocal Marketplace for Products & Services',
+      category: 'MERN stack web Application',
+      description:
+        'A hyperlocal marketplace for buying and selling products and services within a specific geographic area.',
+      image: '/Brazzaro.jpg',
+      tags: [ 'React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'Socket.IO' ],
+      github: 'https://github.com/kiruluchamika/Hyperlocal-Marketplace-for-Products-Services-Project',
+      demo: 'https://www.bazaro.online/',
+      isPrimary: false
+    },
+    {
       title: 'Ceylon Brew - Tea plantation Management System',
       category: 'Next.js & Spring Boot ERP',
       description:
@@ -25,7 +36,7 @@ export default function Projects() {
       tags: ['Next.js', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'TypeScript'],
       github: '#',
       demo: '#',
-      isPrimary: false
+      isPrimary: true
     },
     {
       title: 'Flexiride Vehicle Rental System',
@@ -36,7 +47,7 @@ export default function Projects() {
       tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
       github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
       demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      isPrimary: true
+      isPrimary: false
     },
     {
       title: 'Care Pro Healthcare System',
@@ -47,7 +58,7 @@ export default function Projects() {
       tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
       github: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
       demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
-      isPrimary: false
+      isPrimary: true
     },
     {
       title: 'My Portfolio Website',
@@ -58,7 +69,7 @@ export default function Projects() {
       tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       github: 'https://github.com/GaminduKalmadu/my-modern-portfolio',
       demo: 'https://github.com/GaminduKalmadu/my-modern-portfolio',
-      isPrimary: true
+      isPrimary: false
     },
   ];
 
