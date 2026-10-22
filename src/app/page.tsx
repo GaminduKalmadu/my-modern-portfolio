@@ -3,8 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Layers, Cpu, Palette, Github, ExternalLink, Star, Terminal, Download } from 'lucide-react';
+import { ArrowRight, Github, ExternalLink, Star, Terminal, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import {
+  CreativeDesignIcon,
+  FullStackIcon,
+  ScalableSystemsIcon,
+} from '@/components/AnimatedExpertiseIcons';
 
 const skillsList = [
   'React & Next.js Developer',
@@ -42,28 +47,34 @@ export default function Home() {
 
   const competencies = [
     {
-      icon: Layers,
+      IconVisual: FullStackIcon,
       title: 'Full-Stack Development',
       description: 'Bridging the gap between sleek user interfaces and robust, scalable server architectures.',
-      color: 'from-primary/20 to-primary/5',
-      borderColor: 'border-primary/30',
-      isPrimary: true
+      label: 'Frontend + Backend',
+      surface: 'from-blue-500/10 via-indigo-500/5 to-cyan-400/10',
+      border: 'border-blue-500/20 hover:border-cyan-400/45',
+      labelStyle: 'border-blue-400/20 bg-blue-500/10 text-blue-600 dark:text-cyan-300',
+      line: 'from-blue-500 via-indigo-500 to-cyan-400',
     },
     {
-      icon: Cpu,
+      IconVisual: ScalableSystemsIcon,
       title: 'Scalable Systems',
       description: 'Implementing efficient data handling, OOP principles, and clean API design methodologies.',
-      color: 'from-secondary/20 to-secondary/5',
-      borderColor: 'border-secondary/30',
-      isPrimary: false
+      label: 'Architecture',
+      surface: 'from-emerald-500/10 via-teal-500/5 to-cyan-400/10',
+      border: 'border-emerald-500/20 hover:border-emerald-400/45',
+      labelStyle: 'border-emerald-400/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300',
+      line: 'from-emerald-500 via-teal-400 to-cyan-400',
     },
     {
-      icon: Palette,
+      IconVisual: CreativeDesignIcon,
       title: 'Creative UI/UX',
       description: 'Crafting responsive layout flows, micro-interactions, and visual designs that delight users.',
-      color: 'from-primary/20 to-secondary/20',
-      borderColor: 'border-primary/20',
-      isPrimary: true
+      label: 'Product Design',
+      surface: 'from-violet-500/10 via-fuchsia-500/5 to-orange-400/10',
+      border: 'border-fuchsia-500/20 hover:border-fuchsia-400/45',
+      labelStyle: 'border-fuchsia-400/20 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-300',
+      line: 'from-violet-500 via-fuchsia-500 to-orange-400',
     },
   ];
 
@@ -301,53 +312,68 @@ export default function Home() {
       </section>
 
       {/* Core Competencies Section */}
-      <section className="py-24 relative bg-gray-50/50 dark:bg-gray-900/30 border-y border-gray-100 dark:border-gray-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-primary">Core Expertise</h2>
-            <p className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white">
+      <section className="relative overflow-hidden border-y border-gray-100 bg-slate-50/80 py-24 dark:border-slate-900 dark:bg-slate-950/70">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-blue-500/10 blur-[110px] dark:bg-blue-500/15" />
+          <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-fuchsia-500/10 blur-[120px] dark:bg-fuchsia-500/10" />
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(29,78,216,0.08)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] dark:bg-[radial-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl space-y-4 text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-primary dark:bg-primary/10 dark:text-blue-300">
+              <motion.span
+                animate={shouldReduceMotion ? undefined : { scale: [1, 1.35, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(16,185,129,0.9)]"
+              />
+              Core Expertise
+            </div>
+            <h2 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white md:text-5xl">
               What I Bring to the Table
-            </p>
+            </h2>
             <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400">
               Combining technical depth with creative design to engineer exceptional software.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-3">
             {competencies.map((comp, index) => {
-              const Icon = comp.icon;
+              const IconVisual = comp.IconVisual;
               return (
                 <motion.div
-                  key={index}
+                  key={comp.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`group p-8 rounded-2xl border ${comp.isPrimary ? 'border-primary/20 hover:border-primary/45' : 'border-secondary/20 hover:border-secondary/45'} bg-white dark:bg-gray-900/50 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden`}
+                  whileHover={shouldReduceMotion ? undefined : { y: -8 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.55, delay: index * 0.1, ease: 'easeOut' }}
+                  className={`group relative flex min-h-[25rem] flex-col overflow-hidden rounded-[1.75rem] border bg-white/80 p-7 shadow-[0_18px_50px_-32px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-[border-color,box-shadow] duration-500 hover:shadow-[0_28px_70px_-30px_rgba(29,78,216,0.35)] dark:bg-slate-900/65 ${comp.border}`}
                 >
-                  {/* Subtle inner background glow */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${comp.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
-                  
-                  <div className="relative mb-6">
-                    {/* Shadow Projection */}
-                    <div className={`absolute -inset-2 bg-gradient-to-r ${comp.isPrimary ? 'from-primary to-primary/40' : 'from-secondary to-secondary/40'} rounded-2xl blur-lg opacity-20 group-hover:opacity-60 transition-opacity duration-500`}></div>
-                    {/* Solid custom gradient shape */}
-                    <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br ${
-                      comp.isPrimary ? 'from-primary/25 to-primary/10 border-primary/30' : 'from-secondary/25 to-secondary/10 border-secondary/30'
-                    } border text-gray-800 dark:text-white group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-md group-hover:scale-110 group-hover:rotate-3`}>
-                      <Icon size={28} />
-                    </div>
+                  <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${comp.surface} opacity-55 transition-opacity duration-500 group-hover:opacity-100`} />
+                  <div className={`absolute inset-x-8 top-0 h-px bg-gradient-to-r ${comp.line} opacity-70`} />
+                  <div className={`pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${comp.surface} blur-3xl transition-transform duration-700 group-hover:scale-125`} />
+
+                  <div className="relative mb-8 flex flex-col items-start gap-5 xl:flex-row xl:justify-between xl:gap-4">
+                    <IconVisual reducedMotion={Boolean(shouldReduceMotion)} />
+                    <span className={`rounded-full border px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] ${comp.labelStyle}`}>
+                      {comp.label}
+                    </span>
                   </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-primary">
+
+                  <h3 className="relative text-xl font-extrabold tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-primary dark:text-white dark:group-hover:text-cyan-300 sm:text-2xl">
                     {comp.title}
                   </h3>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed transition-colors duration-300 relative z-10 font-medium">
+
+                  <p className="relative mt-4 text-sm font-medium leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-400 sm:text-base">
                     {comp.description}
                   </p>
 
-                  <div className="mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500"></div>
+                  <div className="relative mt-auto pt-8">
+                    <div className="h-1 w-full overflow-hidden rounded-full bg-slate-200/70 dark:bg-slate-800/80">
+                      <div className={`h-full w-1/3 rounded-full bg-gradient-to-r ${comp.line} transition-all duration-700 ease-out group-hover:w-full`} />
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
