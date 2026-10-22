@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Layers, Cpu, Palette, Github, ExternalLink, Star, Terminal, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -17,6 +18,7 @@ export default function Home() {
   const [typedText, setTypedText] = useState('');
   const [skillIndex, setSkillIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const currentSkill = skillsList[skillIndex];
@@ -208,58 +210,90 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Avatar Section (Futuristic Cybernetic Hologram Frame) */}
-            <div className="lg:col-span-5 flex justify-center items-center relative py-10 sm:py-0">
+            {/* Profile portrait */}
+            <div className="relative flex min-w-0 items-center justify-center px-5 py-14 sm:px-0 sm:py-16 lg:col-span-5 lg:py-0">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, type: 'spring' }}
-                className="relative group cursor-pointer"
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 28, scale: shouldReduceMotion ? 1 : 0.94 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.85, type: 'spring', stiffness: 90, damping: 18, delay: 0.15 }}
+                className="flex w-full justify-center"
               >
-                {/* Slow outer rotating ring with dashes */}
-                <div className="absolute -inset-8 rounded-full border border-dashed border-primary/45 animate-[spin_32s_linear_infinite] pointer-events-none"></div>
-                {/* Mid-speed inner rotating ring with dot indicator */}
-                <div className="absolute -inset-5 rounded-full border border-dotted border-secondary/35 animate-[spin_18s_linear_infinite_reverse] pointer-events-none"></div>
-                {/* Inner target ticks */}
-                <div className="absolute -inset-1 rounded-full border-2 border-primary/20 animate-pulse pointer-events-none"></div>
-                
-                {/* Glowing neon halo behind image */}
-                <div className="absolute -inset-3 bg-gradient-to-tr from-primary via-secondary to-primary rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"></div>
-
-                {/* Main profile picture container (Perfect circle sci-fi scan) */}
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-900 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(29,78,216,0.3)]">
-                  {/* Dynamic 3D mouse parallax hover on photo */}
-                  <motion.img
-                    src="/profile1.jpeg"
-                    alt="Gamindu Kalmadu"
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                  />
-                  
-                  {/* Holographic grid scanner overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(29,78,216,0.05)_1px,transparent_1px)] bg-[size:100%_6px] pointer-events-none mix-blend-overlay"></div>
-                </div>
-
-                {/* Available for work badge */}
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-950/90 dark:bg-gray-900/90 text-white px-5 py-2 rounded-full border border-secondary/40 shadow-2xl flex items-center gap-2 whitespace-nowrap backdrop-blur-md"
+                  animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="group relative isolate aspect-square w-72 sm:w-[22rem] lg:w-full lg:max-w-[25rem] xl:max-w-[26.25rem]"
                 >
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
-                  </span>
-                  <span className="text-[10px] font-extrabold tracking-wider uppercase">Available for Hire</span>
-                </motion.div>
+                  {/* Ambient glow and orbiting frame accents */}
+                  <div className="pointer-events-none absolute -inset-8 -z-20 rounded-[3.5rem] bg-gradient-to-br from-primary/30 via-transparent to-secondary/30 blur-3xl opacity-60 transition-opacity duration-700 group-hover:opacity-90" />
+                  <motion.div
+                    aria-hidden="true"
+                    animate={shouldReduceMotion ? undefined : { rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                    className="pointer-events-none absolute -inset-4 -z-10 rounded-[3.25rem] border border-dashed border-primary/40 dark:border-primary/50"
+                  />
+                  <motion.div
+                    aria-hidden="true"
+                    animate={shouldReduceMotion ? undefined : { rotate: -360 }}
+                    transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+                    className="pointer-events-none absolute -inset-2 -z-10 rounded-[3rem] border border-secondary/25 dark:border-secondary/40"
+                  />
 
-                {/* Floating technology tags */}
-                <div className="hidden sm:block absolute -right-12 top-10 bg-white/70 dark:bg-slate-900/80 backdrop-blur-md rounded-xl p-2.5 border border-primary/20 shadow-md text-[10px] font-extrabold text-gray-700 dark:text-gray-300">
-                  🚀 microservices
-                </div>
-                <div className="hidden sm:block absolute -left-12 bottom-10 bg-white/70 dark:bg-slate-900/80 backdrop-blur-md rounded-xl p-2.5 border border-secondary/20 shadow-md text-[10px] font-extrabold text-gray-700 dark:text-gray-300">
-                  🎨 next.js ui
-                </div>
+                  {/* Portrait frame */}
+                  <div className="relative h-full w-full rounded-[2.75rem] bg-gradient-to-br from-primary via-blue-400 to-secondary p-[3px] shadow-[0_28px_80px_-28px_rgba(29,78,216,0.65)] transition-all duration-500 group-hover:shadow-[0_32px_90px_-25px_rgba(16,185,129,0.55)]">
+                    <motion.div
+                      whileHover={shouldReduceMotion ? undefined : { scale: 1.025 }}
+                      transition={{ type: 'spring', stiffness: 180, damping: 18 }}
+                      className="relative h-full w-full overflow-hidden rounded-[2.6rem] bg-slate-200 dark:bg-slate-900"
+                    >
+                      <Image
+                        src="/newProfile.png"
+                        alt="Gamindu Kalmadu, Software Engineer"
+                        fill
+                        priority
+                        quality={90}
+                        sizes="(max-width: 640px) 288px, (max-width: 1024px) 352px, 420px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-white/10" />
+                      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:100%_7px] mix-blend-overlay" />
+                      {!shouldReduceMotion && (
+                        <motion.div
+                          aria-hidden="true"
+                          animate={{ top: ['8%', '92%', '8%'], opacity: [0, 0.75, 0] }}
+                          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
+                          className="pointer-events-none absolute left-5 right-5 h-px bg-gradient-to-r from-transparent via-secondary to-transparent shadow-[0_0_14px_rgba(16,185,129,0.8)]"
+                        />
+                      )}
+                    </motion.div>
+                  </div>
+
+                  {/* Architectural corner details */}
+                  <div className="pointer-events-none absolute -left-2 -top-2 h-16 w-16 rounded-tl-[3rem] border-l-2 border-t-2 border-primary/80" />
+                  <div className="pointer-events-none absolute -bottom-2 -right-2 h-16 w-16 rounded-br-[3rem] border-b-2 border-r-2 border-secondary/80" />
+
+                  {/* Technology labels stay inside the portrait bounds. */}
+                  <div className="absolute right-3 top-8 hidden items-center gap-2 rounded-full border border-white/30 bg-slate-950/55 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-lg backdrop-blur-md xl:flex">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(29,78,216,0.9)]" />
+                    Full Stack
+                  </div>
+                  <div className="absolute bottom-10 left-3 hidden items-center gap-2 rounded-full border border-white/30 bg-slate-950/55 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-lg backdrop-blur-md xl:flex">
+                    <span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(16,185,129,0.9)]" />
+                    Creative Code
+                  </div>
+
+                  {/* Availability badge */}
+                  <motion.div
+                    whileHover={shouldReduceMotion ? undefined : { scale: 1.04, y: -2 }}
+                    className="absolute -bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-secondary/40 bg-slate-950/90 px-5 py-2.5 text-white shadow-2xl backdrop-blur-md"
+                  >
+                    <span className="relative flex h-2.5 w-2.5">
+                      {!shouldReduceMotion && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />}
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-secondary" />
+                    </span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Available for Hire</span>
+                  </motion.div>
+                </motion.div>
               </motion.div>
             </div>
           </div>
