@@ -1,9 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight, Layers, Cpu, Palette, Github, ExternalLink, Star, Terminal, Download } from 'lucide-react';
+import Image from 'next/image';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, Github, ExternalLink, Star, Terminal, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import {
+  CreativeDesignIcon,
+  FullStackIcon,
+  ScalableSystemsIcon,
+} from '@/components/AnimatedExpertiseIcons';
 
 const skillsList = [
   'React & Next.js Developer',
@@ -17,6 +23,7 @@ export default function Home() {
   const [typedText, setTypedText] = useState('');
   const [skillIndex, setSkillIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const currentSkill = skillsList[skillIndex];
@@ -40,65 +47,71 @@ export default function Home() {
 
   const competencies = [
     {
-      icon: Layers,
+      IconVisual: FullStackIcon,
       title: 'Full-Stack Development',
       description: 'Bridging the gap between sleek user interfaces and robust, scalable server architectures.',
-      color: 'from-primary/20 to-primary/5',
-      borderColor: 'border-primary/30',
-      isPrimary: true
+      label: 'Frontend + Backend',
+      surface: 'from-blue-500/10 via-indigo-500/5 to-cyan-400/10',
+      border: 'border-blue-500/20 hover:border-cyan-400/45',
+      labelStyle: 'border-blue-400/20 bg-blue-500/10 text-blue-600 dark:text-cyan-300',
+      line: 'from-blue-500 via-indigo-500 to-cyan-400',
     },
     {
-      icon: Cpu,
+      IconVisual: ScalableSystemsIcon,
       title: 'Scalable Systems',
       description: 'Implementing efficient data handling, OOP principles, and clean API design methodologies.',
-      color: 'from-secondary/20 to-secondary/5',
-      borderColor: 'border-secondary/30',
-      isPrimary: false
+      label: 'Architecture',
+      surface: 'from-emerald-500/10 via-teal-500/5 to-cyan-400/10',
+      border: 'border-emerald-500/20 hover:border-emerald-400/45',
+      labelStyle: 'border-emerald-400/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300',
+      line: 'from-emerald-500 via-teal-400 to-cyan-400',
     },
     {
-      icon: Palette,
+      IconVisual: CreativeDesignIcon,
       title: 'Creative UI/UX',
       description: 'Crafting responsive layout flows, micro-interactions, and visual designs that delight users.',
-      color: 'from-primary/20 to-secondary/20',
-      borderColor: 'border-primary/20',
-      isPrimary: true
+      label: 'Product Design',
+      surface: 'from-violet-500/10 via-fuchsia-500/5 to-orange-400/10',
+      border: 'border-fuchsia-500/20 hover:border-fuchsia-400/45',
+      labelStyle: 'border-fuchsia-400/20 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-300',
+      line: 'from-violet-500 via-fuchsia-500 to-orange-400',
     },
   ];
 
   const featuredProjects = [
     {
-      title: 'Care Pro Healthcare System',
-      category: 'Full-Stack Web Application',
-      description: 'A comprehensive digital healthcare management platform facilitating patient-doctor communication, appointment booking, medical records management, and automated billing.',
-      summary: 'Key Details: Features patient portals, doctor dashboard scheduling, secure medical history logs, and instant invoice generation with MySQL database integration.',
-      image: '/home.jpeg',
-      tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-      github: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
-      demo: 'https://github.com/kiruluchamika/SLIIT-IWT-Project-2024',
+      title: 'Smart Healthcare Microservices Platform',
+      category: 'Full-Stack Microservices Application',
+      description:
+        'A containerized digital healthcare management platform built on a microservices architecture. Features an isolated React frontend integrated with an Nginx reverse proxy, a secure Spring Boot token-based authentication service backed by MySQL, and an AI-powered doctor suggestion service utilizing Ollama embeddings.',
+      image: '/Clinexa.png',
+      tags: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'Docker', 'Nginx', 'Ollama AI', 'REST API'],
+      github: 'https://github.com/kiruluchamika/Smart-Healthcare-Microservices-Y3S1_DS',
+      demo: 'https://github.com/kiruluchamika/Smart-Healthcare-Microservices-Y3S1_DS',
       isPrimary: true
-    },
-    {
-      title: 'Flexiride Vehicle Rental System',
-      category: 'Enterprise Java Application',
-      description: 'A modern vehicle rental system enabling customers to search, book, and review vehicle listings, featuring custom billing algorithms and a full-featured admin management dashboard.',
-      summary: 'Key Details: Developed as a SLIIT academic project implementing OOP principles, secure user authentication, interactive maps, and real-time fleet availability status.',
-      image: '/car-rental-BL1p-RFW.webp',
-      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
-      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
-      isPrimary: false
     },
     {
       title: 'Ceylon Brew - Tea plantation Management System',
       category: 'Next.js & Spring Boot ERP',
-      description: 'An enterprise resource planning (ERP) platform designed for tea plantation owners to optimize crop harvesting, employee payroll, logistics, and processing workflows.',
-      summary: 'Key Details: Features a Spring Boot microservice backend, robust Next.js frontend, crop-to-shipment tracking log, and interactive plantation maps.',
+      description:
+        'An enterprise resource planning (ERP) platform designed for tea plantation owners to optimize crop harvesting, employee payroll, logistics, and processing workflows.',
       image: '/ceylonbrew.png',
       tags: ['Next.js', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'TypeScript'],
       github: '#',
       demo: '#',
+      isPrimary: false
+    },
+    {
+      title: 'Flexiride Vehicle Rental System',
+      category: 'Enterprise Java Application',
+      description:
+        'A modern vehicle rental system enabling customers to search, book, and review vehicle listings, featuring custom billing algorithms and a full-featured admin management dashboard.',
+      image: '/car-rental-BL1p-RFW.webp',
+      tags: ['HTML', 'JavaScript', 'Tailwind CSS', 'Java', 'MySQL'],
+      github: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
+      demo: 'https://github.com/GaminduKalmadu/flexiride-vehicle-rental-system',
       isPrimary: true
-    }
+    },
   ];
 
   return (
@@ -177,7 +190,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" size={20} />
                 </Link>
                 <a
-                  href="/gamindu_updated26.pdf"
+                  href="/Gamindu_Kalmadu_Resume_new.pdf"
                   download="Gamindu_Kalmadu_CV.pdf"
                   className="inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 dark:text-white rounded-xl transition-all duration-300 hover:scale-[1.03] bg-white border border-gray-200 hover:border-primary/50 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-800 dark:hover:border-secondary/50 dark:hover:bg-gray-800/80 shadow-sm gap-2"
                 >
@@ -208,58 +221,90 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Avatar Section (Futuristic Cybernetic Hologram Frame) */}
-            <div className="lg:col-span-5 flex justify-center items-center relative py-10 sm:py-0">
+            {/* Profile portrait */}
+            <div className="relative flex min-w-0 items-center justify-center px-5 py-14 sm:px-0 sm:py-16 lg:col-span-5 lg:py-0">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, type: 'spring' }}
-                className="relative group cursor-pointer"
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 28, scale: shouldReduceMotion ? 1 : 0.94 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.85, type: 'spring', stiffness: 90, damping: 18, delay: 0.15 }}
+                className="flex w-full justify-center"
               >
-                {/* Slow outer rotating ring with dashes */}
-                <div className="absolute -inset-8 rounded-full border border-dashed border-primary/45 animate-[spin_32s_linear_infinite] pointer-events-none"></div>
-                {/* Mid-speed inner rotating ring with dot indicator */}
-                <div className="absolute -inset-5 rounded-full border border-dotted border-secondary/35 animate-[spin_18s_linear_infinite_reverse] pointer-events-none"></div>
-                {/* Inner target ticks */}
-                <div className="absolute -inset-1 rounded-full border-2 border-primary/20 animate-pulse pointer-events-none"></div>
-                
-                {/* Glowing neon halo behind image */}
-                <div className="absolute -inset-3 bg-gradient-to-tr from-primary via-secondary to-primary rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"></div>
-
-                {/* Main profile picture container (Perfect circle sci-fi scan) */}
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-900 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(29,78,216,0.3)]">
-                  {/* Dynamic 3D mouse parallax hover on photo */}
-                  <motion.img
-                    src="/profile1.jpeg"
-                    alt="Gamindu Kalmadu"
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                  />
-                  
-                  {/* Holographic grid scanner overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(29,78,216,0.05)_1px,transparent_1px)] bg-[size:100%_6px] pointer-events-none mix-blend-overlay"></div>
-                </div>
-
-                {/* Available for work badge */}
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-950/90 dark:bg-gray-900/90 text-white px-5 py-2 rounded-full border border-secondary/40 shadow-2xl flex items-center gap-2 whitespace-nowrap backdrop-blur-md"
+                  animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="group relative isolate aspect-square w-72 sm:w-[22rem] lg:w-full lg:max-w-[25rem] xl:max-w-[26.25rem]"
                 >
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
-                  </span>
-                  <span className="text-[10px] font-extrabold tracking-wider uppercase">Available for Hire</span>
-                </motion.div>
+                  {/* Ambient glow and orbiting frame accents */}
+                  <div className="pointer-events-none absolute -inset-8 -z-20 rounded-[3.5rem] bg-gradient-to-br from-primary/30 via-transparent to-secondary/30 blur-3xl opacity-60 transition-opacity duration-700 group-hover:opacity-90" />
+                  <motion.div
+                    aria-hidden="true"
+                    animate={shouldReduceMotion ? undefined : { rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                    className="pointer-events-none absolute -inset-4 -z-10 rounded-[3.25rem] border border-dashed border-primary/40 dark:border-primary/50"
+                  />
+                  <motion.div
+                    aria-hidden="true"
+                    animate={shouldReduceMotion ? undefined : { rotate: -360 }}
+                    transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+                    className="pointer-events-none absolute -inset-2 -z-10 rounded-[3rem] border border-secondary/25 dark:border-secondary/40"
+                  />
 
-                {/* Floating technology tags */}
-                <div className="hidden sm:block absolute -right-12 top-10 bg-white/70 dark:bg-slate-900/80 backdrop-blur-md rounded-xl p-2.5 border border-primary/20 shadow-md text-[10px] font-extrabold text-gray-700 dark:text-gray-300">
-                  🚀 microservices
-                </div>
-                <div className="hidden sm:block absolute -left-12 bottom-10 bg-white/70 dark:bg-slate-900/80 backdrop-blur-md rounded-xl p-2.5 border border-secondary/20 shadow-md text-[10px] font-extrabold text-gray-700 dark:text-gray-300">
-                  🎨 next.js ui
-                </div>
+                  {/* Portrait frame */}
+                  <div className="relative h-full w-full rounded-[2.75rem] bg-gradient-to-br from-primary via-blue-400 to-secondary p-[3px] shadow-[0_28px_80px_-28px_rgba(29,78,216,0.65)] transition-all duration-500 group-hover:shadow-[0_32px_90px_-25px_rgba(16,185,129,0.55)]">
+                    <motion.div
+                      whileHover={shouldReduceMotion ? undefined : { scale: 1.025 }}
+                      transition={{ type: 'spring', stiffness: 180, damping: 18 }}
+                      className="relative h-full w-full overflow-hidden rounded-[2.6rem] bg-slate-200 dark:bg-slate-900"
+                    >
+                      <Image
+                        src="/newProfile.png"
+                        alt="Gamindu Kalmadu, Software Engineer"
+                        fill
+                        priority
+                        quality={90}
+                        sizes="(max-width: 640px) 288px, (max-width: 1024px) 352px, 420px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-white/10" />
+                      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:100%_7px] mix-blend-overlay" />
+                      {!shouldReduceMotion && (
+                        <motion.div
+                          aria-hidden="true"
+                          animate={{ top: ['8%', '92%', '8%'], opacity: [0, 0.75, 0] }}
+                          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
+                          className="pointer-events-none absolute left-5 right-5 h-px bg-gradient-to-r from-transparent via-secondary to-transparent shadow-[0_0_14px_rgba(16,185,129,0.8)]"
+                        />
+                      )}
+                    </motion.div>
+                  </div>
+
+                  {/* Architectural corner details */}
+                  <div className="pointer-events-none absolute -left-2 -top-2 h-16 w-16 rounded-tl-[3rem] border-l-2 border-t-2 border-primary/80" />
+                  <div className="pointer-events-none absolute -bottom-2 -right-2 h-16 w-16 rounded-br-[3rem] border-b-2 border-r-2 border-secondary/80" />
+
+                  {/* Technology labels stay inside the portrait bounds. */}
+                  <div className="absolute right-3 top-8 hidden items-center gap-2 rounded-full border border-white/30 bg-slate-950/55 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-lg backdrop-blur-md xl:flex">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(29,78,216,0.9)]" />
+                    Full Stack
+                  </div>
+                  <div className="absolute bottom-10 left-3 hidden items-center gap-2 rounded-full border border-white/30 bg-slate-950/55 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-lg backdrop-blur-md xl:flex">
+                    <span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(16,185,129,0.9)]" />
+                    Creative Code
+                  </div>
+
+                  {/* Availability badge */}
+                  <motion.div
+                    whileHover={shouldReduceMotion ? undefined : { scale: 1.04, y: -2 }}
+                    className="absolute -bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-secondary/40 bg-slate-950/90 px-5 py-2.5 text-white shadow-2xl backdrop-blur-md"
+                  >
+                    <span className="relative flex h-2.5 w-2.5">
+                      {!shouldReduceMotion && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />}
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-secondary" />
+                    </span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Available for Hire</span>
+                  </motion.div>
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -267,53 +312,68 @@ export default function Home() {
       </section>
 
       {/* Core Competencies Section */}
-      <section className="py-24 relative bg-gray-50/50 dark:bg-gray-900/30 border-y border-gray-100 dark:border-gray-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-primary">Core Expertise</h2>
-            <p className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white">
+      <section className="relative overflow-hidden border-y border-gray-100 bg-slate-50/80 py-24 dark:border-slate-900 dark:bg-slate-950/70">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-blue-500/10 blur-[110px] dark:bg-blue-500/15" />
+          <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-fuchsia-500/10 blur-[120px] dark:bg-fuchsia-500/10" />
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(29,78,216,0.08)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] dark:bg-[radial-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl space-y-4 text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-primary dark:bg-primary/10 dark:text-blue-300">
+              <motion.span
+                animate={shouldReduceMotion ? undefined : { scale: [1, 1.35, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(16,185,129,0.9)]"
+              />
+              Core Expertise
+            </div>
+            <h2 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white md:text-5xl">
               What I Bring to the Table
-            </p>
+            </h2>
             <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400">
               Combining technical depth with creative design to engineer exceptional software.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-3">
             {competencies.map((comp, index) => {
-              const Icon = comp.icon;
+              const IconVisual = comp.IconVisual;
               return (
                 <motion.div
-                  key={index}
+                  key={comp.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`group p-8 rounded-2xl border ${comp.isPrimary ? 'border-primary/20 hover:border-primary/45' : 'border-secondary/20 hover:border-secondary/45'} bg-white dark:bg-gray-900/50 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden`}
+                  whileHover={shouldReduceMotion ? undefined : { y: -8 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.55, delay: index * 0.1, ease: 'easeOut' }}
+                  className={`group relative flex min-h-[25rem] flex-col overflow-hidden rounded-[1.75rem] border bg-white/80 p-7 shadow-[0_18px_50px_-32px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-[border-color,box-shadow] duration-500 hover:shadow-[0_28px_70px_-30px_rgba(29,78,216,0.35)] dark:bg-slate-900/65 ${comp.border}`}
                 >
-                  {/* Subtle inner background glow */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${comp.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
-                  
-                  <div className="relative mb-6">
-                    {/* Shadow Projection */}
-                    <div className={`absolute -inset-2 bg-gradient-to-r ${comp.isPrimary ? 'from-primary to-primary/40' : 'from-secondary to-secondary/40'} rounded-2xl blur-lg opacity-20 group-hover:opacity-60 transition-opacity duration-500`}></div>
-                    {/* Solid custom gradient shape */}
-                    <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br ${
-                      comp.isPrimary ? 'from-primary/25 to-primary/10 border-primary/30' : 'from-secondary/25 to-secondary/10 border-secondary/30'
-                    } border text-gray-800 dark:text-white group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-md group-hover:scale-110 group-hover:rotate-3`}>
-                      <Icon size={28} />
-                    </div>
+                  <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${comp.surface} opacity-55 transition-opacity duration-500 group-hover:opacity-100`} />
+                  <div className={`absolute inset-x-8 top-0 h-px bg-gradient-to-r ${comp.line} opacity-70`} />
+                  <div className={`pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${comp.surface} blur-3xl transition-transform duration-700 group-hover:scale-125`} />
+
+                  <div className="relative mb-8 flex flex-col items-start gap-5 xl:flex-row xl:justify-between xl:gap-4">
+                    <IconVisual reducedMotion={Boolean(shouldReduceMotion)} />
+                    <span className={`rounded-full border px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] ${comp.labelStyle}`}>
+                      {comp.label}
+                    </span>
                   </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-primary">
+
+                  <h3 className="relative text-xl font-extrabold tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-primary dark:text-white dark:group-hover:text-cyan-300 sm:text-2xl">
                     {comp.title}
                   </h3>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed transition-colors duration-300 relative z-10 font-medium">
+
+                  <p className="relative mt-4 text-sm font-medium leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-400 sm:text-base">
                     {comp.description}
                   </p>
 
-                  <div className="mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500"></div>
+                  <div className="relative mt-auto pt-8">
+                    <div className="h-1 w-full overflow-hidden rounded-full bg-slate-200/70 dark:bg-slate-800/80">
+                      <div className={`h-full w-1/3 rounded-full bg-gradient-to-r ${comp.line} transition-all duration-700 ease-out group-hover:w-full`} />
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -378,11 +438,6 @@ export default function Home() {
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-355 leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
-
-                    {/* Developer Generated Summary Block */}
-                    <div className="p-3.5 rounded-lg bg-gray-100/50 dark:bg-gray-950/60 border border-gray-250/50 dark:border-gray-800/80 text-xs font-medium text-gray-700 dark:text-gray-300 leading-relaxed font-mono">
-                      {project.summary}
-                    </div>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 pt-2">
